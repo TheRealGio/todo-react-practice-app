@@ -1,11 +1,13 @@
 import './App.css';
-import AuthForm from './components/Auth/AuthForm';
+import AuthPage from './pages/AuthPage';
+import {Route} from 'react-router-dom';
+
 
 function App() {
   return (
-    <div>
-      <AuthForm/>
-      </div>
+    <Route path="/">
+      <AuthPage/>
+      </Route>
   );
 }
 
