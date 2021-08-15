@@ -2,8 +2,6 @@ import React from "react";
 import classes from "./InputComponent.module.css";
 
 const InputComponent = (props) => {
-
-
     return (
         <React.Fragment>
         <label htmlFor={props.id}>{props.children}</label>

@@ -2,7 +2,9 @@ aside{
     background: rgba(245, 239, 227, 0.5);
     width: 10%;
     height: 100vh;
+    position: fixed;
 }
+
 
 section {
     flex-direction: column;
