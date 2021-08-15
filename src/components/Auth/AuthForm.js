@@ -11,7 +11,7 @@ const AuthForm = () => {
   };
 
   return (
-    <section className={classes.auth}>
+    <main className={classes.auth}>
       <form>
         <h1>{isLogin ? "Login" : "Sign Up"}</h1>
         {!isLogin && (
@@ -53,7 +53,7 @@ const AuthForm = () => {
           {isLogin ? "New User? Register!" : "Go Back"}
         </Button>
       </form>
-    </section>
+    </main>
   );
 };
 

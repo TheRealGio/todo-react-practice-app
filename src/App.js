@@ -1,14 +1,14 @@
 import './App.css';
 import AuthPage from './pages/AuthPage';
 import {Route} from 'react-router-dom';
-import TodoMain from './pages/TodoMain';
+import HomePage from './pages/HomePage';
 
 
 function App() {
   return (
 
       // <AuthPage/>
-     <TodoMain/>
+     <HomePage/>
   )
 }
 
