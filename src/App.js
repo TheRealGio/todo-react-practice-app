@@ -5,9 +5,9 @@ import {Route} from 'react-router-dom';
 
 function App() {
   return (
-    <Route path="/">
+    // <Route path="/">
       <AuthPage/>
-      </Route>
+      // </Route>
   );
 }
 

@@ -19,6 +19,7 @@ const AuthForm = () => {
         <button type="button" className={classes["btn-transition"]}>
           Login
         </button>
+        <h5>OR</h5>
         <button type="button" className={classes["btn-transition"]}>
           New User? Register!
         </button>

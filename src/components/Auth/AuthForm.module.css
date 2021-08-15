@@ -115,3 +115,29 @@ body {
   );
   box-shadow: 0 4px 15px 0 #e78b00;
 }
+
+
+.auth h5 {
+  width: 90%;
+  margin: .7em auto;
+  overflow: hidden;
+  text-align: center;
+  font-weight:300;
+  color:  rgb(155, 148, 148);  
+}
+.auth h5:before, h5:after {
+  content: "";
+  display: inline-block;
+  width: 49%;
+  height: 1px;
+  margin: 0  -59%;
+  vertical-align: middle;
+  background: -webkit-linear-gradient(left, rgb(155, 148, 148) 0%, transparent 100%);
+}
+
+.auth h5::after {
+   /* margin: 0  -55%;  */
+  background: -webkit-linear-gradient(right, rgb(155, 148, 148) 0%, transparent 100%);
+
+}
+
