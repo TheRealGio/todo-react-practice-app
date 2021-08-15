@@ -1,0 +1,22 @@
+.navBar {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgb(245, 239, 227);
+}
+
+.navBar h1 {
+    /* display: inline-block; */
+    position: absolute;
+    font-size: 50px;
+    text-align: center;
+    top: 50%;
+    right: 50%;
+    transform: translate(0%, -109%);
+}
+
+.navBar Button{
+    float :right;
+    clear : right;
+    margin : 5px;
+}

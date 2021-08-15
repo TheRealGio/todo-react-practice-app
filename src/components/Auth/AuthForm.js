@@ -1,44 +1,57 @@
 import React, { Fragment, useState } from "react";
 import classes from "./AuthForm.module.css";
+import Button from "../UI/Button/Button";
+import InputComponent from "../UI/InputComponent/InputComponent";
 
 const AuthForm = () => {
-  const[isLogin,setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
 
-
   return (
     <section className={classes.auth}>
       <form>
-        <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
-        {!isLogin && <label htmlFor="name">Your Name</label>}
-        {!isLogin && <input
-          type="text"
-          id="name"
-          placeholder="John Smith"
-          required
-          ></input>}
-        <label htmlFor="email">Your Email</label>
-        <input
+        <h1>{isLogin ? "Login" : "Sign Up"}</h1>
+        {!isLogin && (
+          <InputComponent
+            type="text"
+            id="name"
+            placeholder="John Smith"
+            required
+          >
+            Your Name
+          </InputComponent>
+        )}
+        <InputComponent
           type="email"
           id="email"
           placeholder="john.smith@email.com"
           required
-          ></input>
-        <label htmlFor="password">Password</label>
-        <input type="password" id="password" required></input>
-        {!isLogin && <label htmlFor="password-confirm">Confirm Password</label>}
-        {!isLogin && <input type="password" id="password-confirm" required></input>}
+        >
+          Your Email
+        </InputComponent>
+        <InputComponent type="password" id="password" required>
+          Password
+        </InputComponent>
+        {!isLogin && (
+          <InputComponent type="password" id="password-confirm" required>
+            Confirm Password
+          </InputComponent>
+        )}
         <p>Forgot Password?</p>
-        <button type="button" className={classes["btn-transition"]}>
+        <Button type="button" className={classes["btn-transition"]}>
           Login
-        </button>
+        </Button>
         <h5>OR</h5>
-        <button type="button" className={classes["btn-transition"] } onClick = {switchAuthModeHandler}>
-          {isLogin ? 'New User? Register!' : 'Go Back'}
-        </button>
+        <Button
+          type="button"
+          className={classes["btn-transition"]}
+          onClick={switchAuthModeHandler}
+        >
+          {isLogin ? "New User? Register!" : "Go Back"}
+        </Button>
       </form>
     </section>
   );

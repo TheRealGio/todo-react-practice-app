@@ -24,10 +24,6 @@ body {
   padding: 100px;
 }
 
-.auth label {
-  margin-left: 2px;
-}
-
 .auth h1 {
   margin-top: 0px;
   margin-bottom: 75px;
@@ -35,34 +31,9 @@ body {
   align-self: center;
 }
 
-.auth label {
-  font-size: 20px;
-}
-
-.auth input {
-  margin-bottom: 20px;
-}
-
 .auth p {
   align-self: center;
-}
-
-.auth input {
-    text-align: center;
-  width: 100%;
-  padding: 8px 25px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: none;
-  border-bottom: 3px solid #eee1ba;
-  border-radius: 5px;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  outline: none;
-}
-
-.auth input:focus {
-  border-bottom: 3px solid #e78b00;
+  cursor: pointer;
 }
 
 .auth p {
@@ -74,70 +45,34 @@ body {
   color: rgb(231, 139, 0);
 }
 
-.auth button {
-  font-size: 20px;
-  font-family: inherit;
-  color: white;
-  cursor: pointer;
-  border-radius: 12px;
-  border: none;
-  background: #e78b00;
-  background-size: 300% 100%;
-  -o-transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
-  padding: 7px;
-  margin-bottom: 10px;
-}
-
-.auth button:hover {
-  background-position: 100% 0;
-  -o-transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
-  background-image: linear-gradient(
-    to right,
-    #e78b00,
-    #e85a19,
-    #e78b00,
-    #e85a19
-  );
-  box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
-}
-
-.auth button .btn-transition {
-  background-image: linear-gradient(
-    to right,
-    #e78b00,
-    #e85a19,
-    #e78b00,
-    #e85a19
-  );
-  box-shadow: 0 4px 15px 0 #e78b00;
-}
-
-
 .auth h5 {
   width: 90%;
-  margin: .7em auto;
+  margin: 0.7em auto;
   overflow: hidden;
   text-align: center;
-  font-weight:300;
-  color:  rgb(155, 148, 148);  
+  font-weight: 300;
+  color: rgb(155, 148, 148);
 }
-.auth h5:before, h5:after {
+.auth h5:before,
+h5:after {
   content: "";
   display: inline-block;
   width: 49%;
   height: 1px;
-  margin: 0  -59%;
+  margin: 0 -59%;
   vertical-align: middle;
-  background: -webkit-linear-gradient(left, rgb(155, 148, 148) 0%, transparent 100%);
+  background: -webkit-linear-gradient(
+    left,
+    rgb(155, 148, 148) 0%,
+    transparent 100%
+  );
 }
 
 .auth h5::after {
-   /* margin: 0  -55%;  */
-  background: -webkit-linear-gradient(right, rgb(155, 148, 148) 0%, transparent 100%);
-
+  /* margin: 0  -55%;  */
+  background: -webkit-linear-gradient(
+    right,
+    rgb(155, 148, 148) 0%,
+    transparent 100%
+  );
 }
-

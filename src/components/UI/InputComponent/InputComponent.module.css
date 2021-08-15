@@ -1,0 +1,22 @@
+input {
+  text-align: center;
+  width: 100%;
+  padding: 8px 25px;
+  margin: 8px 0px 20px 0px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 3px solid #eee1ba;
+  border-radius: 5px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input:focus {
+  border-bottom: 3px solid #e78b00;
+}
+
+label {
+  font-size: 20px;
+  margin-left: 2px;
+}
