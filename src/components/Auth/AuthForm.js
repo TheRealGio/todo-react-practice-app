@@ -3,13 +3,20 @@ import classes from "./AuthForm.module.css";
 import Button from "../UI/Button/Button";
 import InputComponent from "../UI/InputComponent/InputComponent";
 import FormComponent from "../FormComponent/FormComponent";
+import { useHistory } from "react-router-dom";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const history = useHistory();
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
+
+  const LoginHandler = () => {
+    history.push("/home");
+  };
+
 
   return (
     <FormComponent headerText={isLogin ? "Login" : "Sign Up"}>
@@ -35,7 +42,7 @@ const AuthForm = () => {
         </InputComponent>
       )}
       <p>Forgot Password?</p>
-      <Button type="button" className={classes["btn-transition"]}>
+      <Button type="button" className={classes["btn-transition"] } onClick={LoginHandler}>
         Login
       </Button>
       <h5>OR</h5>
