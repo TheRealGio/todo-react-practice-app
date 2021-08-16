@@ -9,6 +9,7 @@ const InputComponent = (props) => {
           type={props.type}
           id= {props.id}
           placeholder= {props.placeholder}
+          ref = {props.inputRef}
           ></input>
           </React.Fragment>
     )
