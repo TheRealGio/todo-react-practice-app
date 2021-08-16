@@ -43,7 +43,7 @@ const AuthForm = () => {
       )}
       <p>Forgot Password?</p>
       <Button type="button" className={classes["btn-transition"] } onClick={LoginHandler}>
-        Login
+        {isLogin ? "Login" : "Sign Up"}
       </Button>
       <h5>OR</h5>
       <Button
