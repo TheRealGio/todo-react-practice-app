@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
 import NavBar from "../components/TodoMain/TodoNavBar/TodoNavBar";
 import SideBar from "../components/TodoMain/TodoSideBar/TodoSideBar";
-import TodoAdd from "../components/TodoMain/TodoAdd/TodoAdd"
+import TodoModify from "../components/TodoMain/TodoModify/TodoModify";
+import TodoList from "../components/TodoMain/TodoList/TodoList";
 
 const HomePage = () => {
 
@@ -9,7 +10,8 @@ const HomePage = () => {
         <React.Fragment>
             <NavBar/>
             <SideBar/>
-            <TodoAdd/>
+            {/* <TodoModify/> */}
+            <TodoList/>
         </React.Fragment>
     )
 };

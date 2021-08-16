@@ -2,7 +2,7 @@
     position: fixed;
     width: 100%;
     overflow: hidden;
-    background-color: rgba(245, 239, 227);
+    background-color: rgba(245, 239, 227, 0.5);
 }
 
 .navBar h1 {
