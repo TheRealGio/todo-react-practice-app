@@ -4,10 +4,9 @@ import classes from "./ListElement.module.css";
 const ListElement = (props) => {
   return (
     <tr>
-      <td>Test Title</td>
+      <td>{props.title}</td>
       <td>
-        Test Description for this component does it really expand as such or is
-        it just a dream?
+          {props.description}
       </td>
       <td>
         <select
@@ -15,7 +14,7 @@ const ListElement = (props) => {
           id={`todo-options-${props.id}`}
         >
           <option value="completed">Completed</option>
-          <option value="uncompleted">Uncompleted</option>
+          <option value="uncompleted" defaultValue>Uncompleted</option>
           <option value="delete">Delete</option>
         </select>
       </td>
