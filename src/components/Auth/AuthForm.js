@@ -1,18 +1,23 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useContext, useRef, useState } from "react";
 import classes from "./AuthForm.module.css";
 import Button from "../UI/Button/Button";
 import InputComponent from "../UI/InputComponent/InputComponent";
 import FormComponent from "../FormComponent/FormComponent";
 import { useHistory } from "react-router-dom";
+import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
+import AuthContext from "../../store/auth-context";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
+  const authCtx = useContext(AuthContext);
 
   const nameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const confirmPasswordInputRef = useRef();
+
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
@@ -22,41 +27,56 @@ const AuthForm = () => {
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
-
+    let nameInputValue = null;
+    let enteredConfirmPassword = enteredPassword;
     //validation here, can be done
-
+    setIsLoading(true);
+    let url;
     if (isLogin) {
-      
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=***REMOVED***";
     } else {
-      const nameInputValue = nameInputRef.current.value;
-      const enteredConfirmPassword = confirmPasswordInputRef.current.value;
-      if (enteredPassword === enteredConfirmPassword) {
-        fetch(
-          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=***REMOVED***",
-          {
-            method: "POST",
-            body: JSON.stringify({
-              email: enteredEmail,
-              password: enteredPassword,
-              returnSecureToken: true,
-            }),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        ).then((res) => {
+      nameInputValue = nameInputRef.current.value;
+      enteredConfirmPassword = confirmPasswordInputRef.current.value;
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=***REMOVED***";
+    }
+
+    if (enteredPassword === enteredConfirmPassword) {
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify({
+          email: enteredEmail,
+          password: enteredPassword,
+          returnSecureToken: true,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res, data) => {
+          setIsLoading(false);
           if (res.ok) {
             history.push("/home");
+            return res.json();
           } else {
-            res.json().then((data) => {
-              console.log(data);
-              alert(`Error Code : ${data.error.code} ${data.error.message}`); //can be a modal done for time constraints / not really important right now
-            });
+            let errorMessage = `Error Code : ${data.error.code} ${data.error.message}`;
+            throw new Error(errorMessage);
           }
+        })
+        .then((data) => {
+          const expirationTime = new Date(
+            new Date().getTime() + +data.expiresIn * 1000
+          );
+          authCtx.login(data.idToken, expirationTime.toISOString());
+          history.replace("/home");
+        })
+        .catch((err) => {
+          console.log(err.message);
+          alert(err.message);
         });
-      } else {
-        alert("Password Fields Don't match!");
-      }
+    } else {
+      alert("Password Fields Don't match!");
     }
   };
 
