@@ -22,20 +22,24 @@ export async function getAllTodos() {
     return transformedTodos;
 }
 
-export async function getSingleTodo(todoId) {
-    const response = await fetch(`${FIREBASE_DOMAIN}/todos/${todoId}.json`);
+export async function updateIsCompleted(todoData,isCompleted) {
+    const response = await fetch(`${FIREBASE_DOMAIN}todos/${todoData.id}.json`,{
+      method: 'PATCH',
+      body: JSON.stringify({
+        isCompleted: isCompleted,
+      }),
+      headers: {
+        'Content-Type' : 'application/json',
+      },
+    });
     const data = await response.json();
   
     if (!response.ok) {
-      alert("Could Not Fetch Todo!");
-    }
-  
-    const loadedTodos = {
-      id: todoId,
-      ...data,
-    };
-  
-    return loadedTodos;
+      alert("Could Not Update isCompleted");
+    } 
+ 
+
+    return null;
   }
 
   export async function addTodo(todoData) {
@@ -50,6 +54,19 @@ export async function getSingleTodo(todoId) {
   
     if (!response.ok) {
       alert("Could Not create Todo");
+    }
+  
+    return null;
+  }
+
+  export async function removeTodo(todoId) {
+    const response = await fetch(`${FIREBASE_DOMAIN}todos/${todoId}.json`, {
+      method: 'DELETE',
+    });
+    const data = await response.json();
+  
+    if (!response.ok) {
+      alert("Could Not Delete Todo");
     }
   
     return null;
