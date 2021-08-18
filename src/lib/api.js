@@ -5,7 +5,7 @@ export async function getAllTodos() {
     const data = await response.json();
 
     if(!response.ok) {
-        throw new Error (data.message || 'Could not fetch Todos!');
+        alert("Could Not Fetch Todos!");
     }
 
     const transformedTodos = [];
@@ -33,13 +33,13 @@ export async function getSingleTodo(todoId) {
       ...data,
     };
   
-    return loadedTodo;
+    return loadedTodos;
   }
 
   export async function addTodo(todoData) {
-    const response = await fetch(`${FIREBASE_DOMAIN}/todos.json`, {
+    const response = await fetch(`${FIREBASE_DOMAIN}todos.json`, {
       method: 'POST',
-      body: JSON.stringify(Data),
+      body: JSON.stringify(todoData),
       headers: {
         'Content-Type': 'application/json',
       },
