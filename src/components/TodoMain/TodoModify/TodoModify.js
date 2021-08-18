@@ -8,7 +8,6 @@ import { useHistory } from "react-router-dom";
 const TodoModify = (props) => {
   const titleInput = useRef();
   const descriptionInput = useRef();
-  const history = useHistory();
 
   const addingTodo = (event) => {
       

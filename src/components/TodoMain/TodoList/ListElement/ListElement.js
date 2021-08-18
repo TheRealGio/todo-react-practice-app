@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { updateIsCompleted } from "../../../../lib/api";
+import { removeTodo, updateIsCompleted } from "../../../../lib/api";
 import classes from "./ListElement.module.css";
 
 const ListElement = (props) => {
@@ -17,8 +17,9 @@ const ListElement = (props) => {
     } else if (selection === "incompleted"){
       updateIsCompleted(props.id,false).then(
         setIsCompleted(false)
-       
       );
+    } else if (selection === "delete"){
+      props.onDelete(props.id);
     }
   };
   return (

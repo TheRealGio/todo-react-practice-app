@@ -59,8 +59,8 @@ export async function updateIsCompleted(todoData,isCompleted) {
     return null;
   }
 
-  export async function removeTodo(todoId) {
-    const response = await fetch(`${FIREBASE_DOMAIN}todos/${todoId}.json`, {
+  export async function removeTodo(todoData) {
+    const response = await fetch(`${FIREBASE_DOMAIN}todos/${todoData.id}.json`, {
       method: 'DELETE',
     });
     const data = await response.json();

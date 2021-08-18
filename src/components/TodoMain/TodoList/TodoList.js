@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classes from "./TodoList.module.css";
 import ListElement from "./ListElement/ListElement";
-import { getAllTodos } from "../../../lib/api";
+import { getAllTodos, removeTodo } from "../../../lib/api";
 
 const TodoList = () => {
   const [todoList, setTodoList] = useState([]);
@@ -11,6 +11,11 @@ const TodoList = () => {
       console.log(data);
     });
   }, []);
+
+  const deleteHandler = (id) => {
+    removeTodo(id);
+    getAllTodos();
+  };
   return (
     <main className={classes["table-align"]}>
       <h1>TODO List</h1>
@@ -38,7 +43,7 @@ const TodoList = () => {
                   isCompleted={todo.isCompleted}
                   setKey={todo.id}
                   id={todo}
-                  stateChanger={setTodoList}
+                  onDelete={deleteHandler}
                 />
               );
             })}
