@@ -3,7 +3,7 @@ import classes from "./ListElement.module.css";
 
 const ListElement = (props) => {
   return (
-    <tr>
+    <tr key={props.keykey}>
       <td>{props.title}</td>
       <td>
           {props.description}
@@ -14,7 +14,7 @@ const ListElement = (props) => {
           id={`todo-options-${props.id}`}
         >
           <option value="completed">Completed</option>
-          <option value="uncompleted" defaultValue>Uncompleted</option>
+          <option value="uncompleted" selected >Uncompleted</option>
           <option value="delete">Delete</option>
         </select>
       </td>

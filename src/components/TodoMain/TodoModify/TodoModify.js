@@ -4,10 +4,11 @@ import classes from "./TodoModify.module.css";
 import InputComponent from "../../UI/InputComponent/InputComponent";
 import Button from "../../UI/Button/Button";
 import { addTodo } from "../../../lib/api";
+import { useHistory } from "react-router-dom";
 const TodoModify = (props) => {
   const titleInput = useRef();
   const descriptionInput = useRef();
-  
+  const history = useHistory();
 
   const addingTodo = (event) => {
       
@@ -15,8 +16,11 @@ const TodoModify = (props) => {
       const dataObj = {
         title: titleInput.current.value,
         description: descriptionInput.current.value,
+        isCompleted: false,
       };
+      
       addTodo(dataObj);
+      
   };
 
 

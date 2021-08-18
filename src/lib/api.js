@@ -13,10 +13,12 @@ export async function getAllTodos() {
     for(const key in data){
         const todoObj = {
             id:key,
+            
             ...data[key],
         };
         transformedTodos.push(todoObj);
     }
+
     return transformedTodos;
 }
 
