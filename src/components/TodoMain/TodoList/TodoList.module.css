@@ -17,6 +17,7 @@
     padding: 100px;
   }
   .table-align th,td {
+      text-align: center;
       padding: 20px;
 
 
