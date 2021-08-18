@@ -5,7 +5,7 @@ export async function getAllTodos() {
     const data = await response.json();
 
     if(!response.ok) {
-        alert("Could Not Fetch Todos!");
+        
     }
 
     const transformedTodos = [];
@@ -25,7 +25,7 @@ export async function getSingleTodo(todoId) {
     const data = await response.json();
   
     if (!response.ok) {
-      throw new Error(data.message || 'Could not fetch todo.');
+      alert("Could Not Fetch Todo!");
     }
   
     const loadedTodos = {
@@ -47,7 +47,7 @@ export async function getSingleTodo(todoId) {
     const data = await response.json();
   
     if (!response.ok) {
-      throw new Error(data.message || 'Could not create Todo.');
+      alert("Could Not create Todo");
     }
   
     return null;

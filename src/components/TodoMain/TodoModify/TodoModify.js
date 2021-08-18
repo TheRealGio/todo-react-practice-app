@@ -8,12 +8,14 @@ const TodoModify = (props) => {
   const titleInput = useRef();
   const descriptionInput = useRef();
   
-  const dataObj = {
-    title: titleInput.current.value,
-    description: descriptionInput.current.value,
-  };
+
   const addingTodo = (event) => {
+      
       event.preventDefault();
+      const dataObj = {
+        title: titleInput.current.value,
+        description: descriptionInput.current.value,
+      };
       addTodo(dataObj);
   };
 
