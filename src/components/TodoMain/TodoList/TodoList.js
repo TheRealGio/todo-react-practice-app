@@ -14,10 +14,11 @@ const TodoList = () => {
 
       console.log(data);
     });
-  }, [todoList]);
+  }, []);
 
   const deleteHandler = (id) => {
-    removeTodo(id)
+
+    removeTodo(id);
 
   };
   return (

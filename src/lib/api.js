@@ -22,8 +22,8 @@ export async function getAllTodos() {
     return transformedTodos;
 }
 
-export async function updateIsCompleted(todoData,isCompleted) {
-    const response = await fetch(`${FIREBASE_DOMAIN}todos/${todoData.id}.json`,{
+export async function updateIsCompleted(todoId,isCompleted) {
+    const response = await fetch(`${FIREBASE_DOMAIN}todos/${todoId}.json`,{
       method: 'PATCH',
       body: JSON.stringify({
         isCompleted: isCompleted,
