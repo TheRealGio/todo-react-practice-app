@@ -68,6 +68,5 @@ export async function updateIsCompleted(todoData,isCompleted) {
     if (!response.ok) {
       alert("Could Not Delete Todo");
     }
-  
     return null;
   }

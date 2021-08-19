@@ -12,9 +12,13 @@ const TodoList = () => {
     });
   }, []);
 
-  const deleteHandler = (id) => {
-    removeTodo(id);
-    getAllTodos();
+  const deleteHandler = (id) => {   //Code Duplication
+    removeTodo(id)
+      getAllTodos()
+      .then((data)=>{
+      setTodoList(data);
+
+    });
   };
   return (
     <main className={classes["table-align"]}>
