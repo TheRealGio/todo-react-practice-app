@@ -33,8 +33,12 @@
   .table-align select{
       padding: 4px;
       border-radius: 12px;
-  }
+    }
+  .table-align select:focus{
+    outline:none;
+}
 
 .empty-todo{
   text-align: center;
 }
+

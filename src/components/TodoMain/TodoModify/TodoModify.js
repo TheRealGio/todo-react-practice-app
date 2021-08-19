@@ -3,14 +3,14 @@ import FormComponent from "../../FormComponent/FormComponent";
 import classes from "./TodoModify.module.css";
 import InputComponent from "../../UI/InputComponent/InputComponent";
 import Button from "../../UI/Button/Button";
-import { addTodo } from "../../../lib/api";
+import { addTodo, getAllTodos } from "../../../lib/api";
 import { useHistory } from "react-router-dom";
 const TodoModify = (props) => {
+  const history =  useHistory();
   const titleInput = useRef();
   const descriptionInput = useRef();
 
   const addingTodo = (event) => {
-      
       event.preventDefault();
       const dataObj = {
         title: titleInput.current.value,
@@ -18,7 +18,12 @@ const TodoModify = (props) => {
         isCompleted: false,
       };
       
-      addTodo(dataObj);
+      addTodo(dataObj).then(
+        getAllTodos()
+      ).then(
+        history.push("/home/listTodo")
+      );
+
       
   };
 
