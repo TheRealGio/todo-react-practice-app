@@ -12,7 +12,7 @@ const HomePage = () => {
       <SideBar />
     <Switch>
       <Route path="/home/addtodo">
-        <TodoModify />
+        <TodoModify isUpdate={false} />
       </Route>
       <Route path="/home/listtodo">
         <TodoList />

@@ -5,7 +5,7 @@ export async function getAllTodos() {
     const data = await response.json();
 
     if(!response.ok) {
-        
+        alert("Failed to fetch todos!")
     }
 
     const transformedTodos = [];
@@ -41,6 +41,28 @@ export async function updateIsCompleted(todoId,isCompleted) {
 
     return null;
   }
+
+  export async function updateTodo(todoId,title,description) {
+    const response = await fetch(`${FIREBASE_DOMAIN}todos/${todoId}.json`,{
+      method: 'PATCH',
+      body: JSON.stringify({
+        title: title,
+        description:description,
+      }),
+      headers: {
+        'Content-Type' : 'application/json',
+      },
+    });
+    const data = await response.json();
+  
+    if (!response.ok) {
+      alert("Could Not Update Todo");
+    } 
+ 
+
+    return null;
+  }
+
 
   export async function addTodo(todoData) {
     const response = await fetch(`${FIREBASE_DOMAIN}todos.json`, {

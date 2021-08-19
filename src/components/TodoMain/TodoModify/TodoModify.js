@@ -1,31 +1,43 @@
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import FormComponent from "../../FormComponent/FormComponent";
 import classes from "./TodoModify.module.css";
 import InputComponent from "../../UI/InputComponent/InputComponent";
 import Button from "../../UI/Button/Button";
-import { addTodo, getAllTodos } from "../../../lib/api";
-import { useHistory } from "react-router-dom";
+import { addTodo, getAllTodos, updateTodo } from "../../../lib/api";
+import { useHistory, useParams } from "react-router-dom";
 const TodoModify = (props) => {
   const history = useHistory();
   const titleInput = useRef();
   const descriptionInput = useRef();
+  const [Update,setUpdate] =useState(props.isUpdate);
+  const params  = useParams();
+  const submitHandler = (event) => {
+    if(!Update){
+      event.preventDefault();
+      const dataObj = {
+        title: titleInput.current.value,
+        description: descriptionInput.current.value,
+        isCompleted: false,
+      };
+      setUpdate(false);
+      addTodo(dataObj).then(getAllTodos()).then(history.push("/home/listTodo"));
 
-  const addingTodo = (event) => {
-    event.preventDefault();
-    const dataObj = {
-      title: titleInput.current.value,
-      description: descriptionInput.current.value,
-      isCompleted: false,
-    };
-
-    addTodo(dataObj).then(getAllTodos()).then(history.push("/home/listTodo"));
+    } else {
+      event.preventDefault();
+      const title = titleInput.current.value;
+      const description = descriptionInput.current.value;
+      setUpdate(true);
+      updateTodo(params.todoId,title,description).then(getAllTodos().then(history.push("/home/listTodo")));
+    }
   };
+
+
 
   return (
     <main>
       <FormComponent
         headerText={props.isUpdate ? "Update TODO" : "Add TODOs"}
-        onSubmit={addingTodo}
+        onSubmit={submitHandler}
       >
         <InputComponent
           type="text"
