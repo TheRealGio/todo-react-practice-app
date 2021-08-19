@@ -16,9 +16,15 @@ const TodoList = () => {
     });
   }, []);
 
-  const deleteHandler = (id) => {
+  const  deleteHandler = async (id) => {
 
-    removeTodo(id);
+    await removeTodo(id);
+    await getAllTodos().then((data) => {
+      setTodoList(data);
+      setIsLoading(false);
+      console.log(data);
+    });
+
 
   };
   return (
