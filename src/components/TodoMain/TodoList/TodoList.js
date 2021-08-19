@@ -6,20 +6,19 @@ import LoadingSpinner from "../../UI/LoadingSpinner/LoadingSpinner";
 
 const TodoList = () => {
   const [todoList, setTodoList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     getAllTodos().then((data) => {
       setTodoList(data);
+      setIsLoading(false);
+
       console.log(data);
     });
-  }, []);
+  }, [todoList]);
 
-  const deleteHandler = (id) => {   //Code Duplication
+  const deleteHandler = (id) => {
     removeTodo(id)
-      getAllTodos()
-      .then((data)=>{
-      setTodoList(data);
 
-    });
   };
   return (
     <main className={classes["table-align"]}>
@@ -31,10 +30,17 @@ const TodoList = () => {
             <th>Description</th>
             <th>Options</th>
           </tr>
-          {todoList.length === 0 && (
+          {isLoading && todoList.length === 0 && (
             <tr>
               <td className={classes["empty-todo"]} colSpan="3">
-                <LoadingSpinner/>
+                <LoadingSpinner />
+              </td>
+            </tr>
+          )}
+          {!isLoading && todoList.length === 0 && (
+            <tr>
+              <td className={classes["empty-todo"]} colSpan="3">
+                No Todos were found Create some in the Add Tab!
               </td>
             </tr>
           )}
@@ -46,8 +52,9 @@ const TodoList = () => {
                   title={todo.title}
                   description={todo.description}
                   isCompleted={todo.isCompleted}
+                  key={todo.id}
                   setKey={todo.id}
-                  id={todo}
+                  id={todo.id}
                   onDelete={deleteHandler}
                 />
               );
