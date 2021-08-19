@@ -6,33 +6,27 @@ import Button from "../../UI/Button/Button";
 import { addTodo, getAllTodos } from "../../../lib/api";
 import { useHistory } from "react-router-dom";
 const TodoModify = (props) => {
-  const history =  useHistory();
+  const history = useHistory();
   const titleInput = useRef();
   const descriptionInput = useRef();
 
   const addingTodo = (event) => {
-      event.preventDefault();
-      const dataObj = {
-        title: titleInput.current.value,
-        description: descriptionInput.current.value,
-        isCompleted: false,
-      };
-      
-      addTodo(dataObj).then(
-        getAllTodos()
-      ).then(
-        history.push("/home/listTodo")
-      );
+    event.preventDefault();
+    const dataObj = {
+      title: titleInput.current.value,
+      description: descriptionInput.current.value,
+      isCompleted: false,
+    };
 
-      
+    addTodo(dataObj).then(getAllTodos()).then(history.push("/home/listTodo"));
   };
-
-
-
 
   return (
     <main>
-      <FormComponent headerText={props.isUpdate ? "Update TODO" : "Add TODOs"} onSubmit={addingTodo}>
+      <FormComponent
+        headerText={props.isUpdate ? "Update TODO" : "Add TODOs"}
+        onSubmit={addingTodo}
+      >
         <InputComponent
           type="text"
           id={props.isUpdate ? "update-todo-title" : "add-todo-title"}

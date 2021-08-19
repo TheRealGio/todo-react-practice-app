@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import classes from "./TodoList.module.css";
-import ListElement from "./ListElement/ListElement";
+import ListElement from "../ListElement/ListElement";
 import { getAllTodos, removeTodo } from "../../../lib/api";
+import LoadingSpinner from "../../UI/LoadingSpinner/LoadingSpinner";
 
 const TodoList = () => {
   const [todoList, setTodoList] = useState([]);
@@ -33,7 +34,7 @@ const TodoList = () => {
           {todoList.length === 0 && (
             <tr>
               <td className={classes["empty-todo"]} colSpan="3">
-                There is nothing to Display!
+                <LoadingSpinner/>
               </td>
             </tr>
           )}

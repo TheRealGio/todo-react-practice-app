@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { removeTodo, updateIsCompleted } from "../../../../lib/api";
+import { removeTodo, updateIsCompleted } from "../../../lib/api";
 import classes from "./ListElement.module.css";
 
 const ListElement = (props) => {
