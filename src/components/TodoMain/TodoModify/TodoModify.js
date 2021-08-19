@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import FormComponent from "../../FormComponent/FormComponent";
 import classes from "./TodoModify.module.css";
 import InputComponent from "../../UI/InputComponent/InputComponent";
@@ -9,10 +9,10 @@ const TodoModify = (props) => {
   const history = useHistory();
   const titleInput = useRef();
   const descriptionInput = useRef();
-  const [Update,setUpdate] =useState(props.isUpdate);
-  const params  = useParams();
+  const [Update, setUpdate] = useState(props.isUpdate);
+  const params = useParams();
   const submitHandler = (event) => {
-    if(!Update){
+    if (!Update) {
       event.preventDefault();
       const dataObj = {
         title: titleInput.current.value,
@@ -21,17 +21,16 @@ const TodoModify = (props) => {
       };
       setUpdate(false);
       addTodo(dataObj).then(getAllTodos()).then(history.push("/home/listTodo"));
-
     } else {
       event.preventDefault();
       const title = titleInput.current.value;
       const description = descriptionInput.current.value;
       setUpdate(true);
-      updateTodo(params.todoId,title,description).then(getAllTodos().then(history.push("/home/listTodo")));
+      updateTodo(params.todoId, title, description).then(
+        getAllTodos().then(history.push("/home/listTodo"))
+      );
     }
   };
-
-
 
   return (
     <main>
