@@ -1,44 +1,40 @@
 .table-align {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-
-  
-  .table-align table {
-    background-color: rgb(245, 239, 227);
-    border-radius: 12px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-    max-width: 50%;
-    border-collapse: collapse;
-    padding: 100px;
-  }
-  .table-align th,td {
-      text-align: center;
-      padding: 20px;
-
-
-  }
-  .table-align th{
-      background: #e78b00;
-      color: white;
-  }
-  .table-align h1 {
-    font-size: 50px;
-  }
-
-  .table-align select{
-      padding: 4px;
-      border-radius: 12px;
-    }
-  .table-align select:focus{
-    outline:none;
+.table-align table {
+  background-color: rgb(245, 239, 227);
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  max-width: 50%;
+  border-collapse: collapse;
+  padding: 100px;
+}
+.table-align th,
+td {
+  text-align: center;
+  padding: 20px;
+}
+.table-align th {
+  background: #e78b00;
+  color: white;
+}
+.table-align h1 {
+  font-size: 50px;
 }
 
-.empty-todo{
+.table-align select {
+  padding: 4px;
+  border-radius: 12px;
+}
+.table-align select:focus {
+  outline: none;
+}
+
+.empty-todo {
   text-align: center;
 }
-

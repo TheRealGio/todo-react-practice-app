@@ -16,16 +16,13 @@ const TodoList = () => {
     });
   }, []);
 
-  const  deleteHandler = async (id) => {
-
+  const deleteHandler = async (id) => {
     await removeTodo(id);
     await getAllTodos().then((data) => {
       setTodoList(data);
       setIsLoading(false);
       console.log(data);
     });
-
-
   };
   return (
     <main className={classes["table-align"]}>

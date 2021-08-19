@@ -1,16 +1,15 @@
-
- p {
+p {
   align-self: center;
   cursor: pointer;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
- p:hover {
+p:hover {
   color: rgb(231, 139, 0);
 }
 
- h5 {
+h5 {
   width: 90%;
   margin: 0.7em auto;
   overflow: hidden;
@@ -18,7 +17,7 @@
   font-weight: 300;
   color: rgb(155, 148, 148);
 }
- h5:before,
+h5:before,
 h5:after {
   content: "";
   display: inline-block;
@@ -34,7 +33,6 @@ h5:after {
 }
 
 h5::after {
-  /* margin: 0  -55%;  */
   background: -webkit-linear-gradient(
     right,
     rgb(155, 148, 148) 0%,

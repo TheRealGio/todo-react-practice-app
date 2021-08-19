@@ -1,7 +1,7 @@
-import React, { Fragment, useState } from "react";
-import {  updateIsCompleted ,updateTodo } from "../../../lib/api";
+import React, { useState } from "react";
+import { updateIsCompleted } from "../../../lib/api";
 import classes from "./ListElement.module.css";
-import { Route, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const ListElement = (props) => {
   const history = useHistory();
@@ -23,11 +23,17 @@ const ListElement = (props) => {
     }
   };
   return (
-    <tr key={props.setKey} >
-      <td className={isCompleted ? classes.completed : classes.incompleted} onClick={update}>
+    <tr key={props.setKey}>
+      <td
+        className={isCompleted ? classes.completed : classes.incompleted}
+        onClick={update}
+      >
         {props.title}
       </td>
-      <td className={isCompleted ? classes.completed : classes.incompleted} onClick={update}>
+      <td
+        className={isCompleted ? classes.completed : classes.incompleted}
+        onClick={update}
+      >
         {props.description}
       </td>
       <td>

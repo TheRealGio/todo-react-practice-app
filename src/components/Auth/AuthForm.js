@@ -1,15 +1,14 @@
-import React, { Fragment, useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import classes from "./AuthForm.module.css";
 import Button from "../UI/Button/Button";
 import InputComponent from "../UI/InputComponent/InputComponent";
 import FormComponent from "../FormComponent/FormComponent";
 import { useHistory } from "react-router-dom";
-import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
 import AuthContext from "../../store/auth-context";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+
   const history = useHistory();
   const authCtx = useContext(AuthContext);
 
@@ -30,7 +29,6 @@ const AuthForm = () => {
     let nameInputValue = null;
     let enteredConfirmPassword = enteredPassword;
     //validation here, can be done
-    setIsLoading(true);
     let url;
     if (isLogin) {
       url =
@@ -55,7 +53,6 @@ const AuthForm = () => {
         },
       })
         .then((res, data) => {
-          setIsLoading(false);
           if (res.ok) {
             history.push("/home");
             return res.json();

@@ -1,22 +1,22 @@
 .navBar {
-    position: fixed;
-    width: 100%;
-    overflow: hidden;
-    background-color: rgba(245, 239, 227, 0.5);
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(245, 239, 227, 0.5);
 }
 
 .navBar h1 {
-    /* display: inline-block; */
-    position: absolute;
-    font-size: 50px;
-    text-align: center;
-    top: 50%;
-    right: 50%;
-    transform: translate(0%, -109%);
+  /* display: inline-block; */
+  position: absolute;
+  font-size: 50px;
+  text-align: center;
+  top: 50%;
+  right: 50%;
+  transform: translate(0%, -109%);
 }
 
-.navBar Button{
-    float :right;
-    clear : right;
-    margin : 5px;
+.navBar Button {
+  float: right;
+  clear: right;
+  margin: 5px;
 }

@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
-
 import classes from "./TodoNavBar.module.css";
-
 import Button from "../../UI/Button/Button";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../../../store/auth-context";

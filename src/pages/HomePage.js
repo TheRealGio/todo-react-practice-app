@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import NavBar from "../components/TodoMain/TodoNavBar/TodoNavBar";
 import SideBar from "../components/TodoMain/TodoSideBar/TodoSideBar";
 import TodoModify from "../components/TodoMain/TodoModify/TodoModify";
@@ -10,16 +10,16 @@ const HomePage = () => {
     <React.Fragment>
       <NavBar />
       <SideBar />
-    <Switch>
-      <Route path="/home/addtodo">
-        <TodoModify isUpdate={false} />
-      </Route>
-      <Route path="/home/listtodo">
-        <TodoList />
-      </Route>
-      <Route path="/home/updatetodo/:todoId">
-        <TodoModify isUpdate={true} />
-      </Route>
+      <Switch>
+        <Route path="/home/addtodo">
+          <TodoModify isUpdate={false} />
+        </Route>
+        <Route path="/home/listtodo">
+          <TodoList />
+        </Route>
+        <Route path="/home/updatetodo/:todoId">
+          <TodoModify isUpdate={true} />
+        </Route>
       </Switch>
     </React.Fragment>
   );
