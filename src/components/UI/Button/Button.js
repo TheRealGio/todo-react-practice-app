@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./Button.module.css";
+import  "./Button.module.css";
 
 const Button = (props) => {
   const fullStyle = "btn-transition " + props.addClass;
@@ -9,7 +9,7 @@ const Button = (props) => {
       onClick={props.onClick}
       type={props.type}
       id={props.id}
-      className={(classes[fullStyle], props.addClass)}
+      className={`${fullStyle}`}
     >
       {props.children}
     </button>

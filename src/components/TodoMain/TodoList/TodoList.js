@@ -13,9 +13,10 @@ const TodoList = () => {
       getAllTodos().then((data) => {
         setTodoList(data);
         setIsLoading(false);
-        console.log(todoList + "Todolist");
+
       });
   },[]);
+
   useEffect(() => {
     callTodo();
   }, [callTodo]);

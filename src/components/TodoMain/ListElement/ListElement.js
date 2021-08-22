@@ -1,5 +1,4 @@
 import React from "react";
-import { getAllTodos, updateIsCompleted } from "../../../lib/api";
 import classes from "./ListElement.module.css";
 import { useHistory } from "react-router-dom";
 

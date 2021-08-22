@@ -44,6 +44,7 @@ const AuthForm = () => {
       fetch(url, {
         method: "POST",
         body: JSON.stringify({
+          name: nameInputValue,
           email: enteredEmail,
           password: enteredPassword,
           returnSecureToken: true,
