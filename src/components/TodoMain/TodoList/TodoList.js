@@ -1,32 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import classes from "./TodoList.module.css";
 import ListElement from "../ListElement/ListElement";
-import { getAllTodos, removeTodo } from "../../../lib/api";
+import { getAllTodos, removeTodo, updateIsCompleted } from "../../../lib/api";
 import LoadingSpinner from "../../UI/LoadingSpinner/LoadingSpinner";
 
 const TodoList = () => {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    getAllTodos().then((data) => {
-      setTodoList(data);
-      setIsLoading(false);
 
-      console.log(data);
-    });
-  }, []);
+  const callTodo = useCallback(() => {
+
+      getAllTodos().then((data) => {
+        setTodoList(data);
+        setIsLoading(false);
+        console.log(todoList + "Todolist");
+      });
+  },[]);
+  useEffect(() => {
+    callTodo();
+  }, [callTodo]);
 
   const deleteHandler = async (id) => {
     await removeTodo(id);
-    await getAllTodos().then((data) => {
-      setTodoList(data);
-      setIsLoading(false);
-      console.log(data);
-    });
+    await callTodo();
   };
+
+  const compIncompHandler = async (id, isComplete) => {
+    await updateIsCompleted(id, isComplete);
+    await callTodo();
+  };
+
+
   return (
     <main className={classes["table-align"]}>
       <h1>TODO List</h1>
+      <p>Completed: {todoList.filter((el) => el.isCompleted === true).length}</p>
+      <p>Incompleted: {todoList.filter((el) => el.isCompleted === false).length}</p>
       <table>
         <tbody>
           <tr>
@@ -49,7 +58,7 @@ const TodoList = () => {
             </tr>
           )}
 
-          {todoList.length != 0 &&
+          {todoList.length !== 0 &&
             todoList.map((todo) => {
               return (
                 <ListElement
@@ -60,6 +69,7 @@ const TodoList = () => {
                   setKey={todo.id}
                   id={todo.id}
                   onDelete={deleteHandler}
+                  onCompIncomp={compIncompHandler}
                 />
               );
             })}

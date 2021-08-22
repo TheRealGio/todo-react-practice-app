@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { updateIsCompleted } from "../../../lib/api";
+import React from "react";
+import { getAllTodos, updateIsCompleted } from "../../../lib/api";
 import classes from "./ListElement.module.css";
 import { useHistory } from "react-router-dom";
 
 const ListElement = (props) => {
   const history = useHistory();
 
-  const [isCompleted, setIsCompleted] = useState(props.isCompleted);
+
   const update = () => {
     history.push(`/home/updatetodo/${props.id}`);
   };
@@ -15,9 +15,10 @@ const ListElement = (props) => {
 
     if (selection === "completed") {
       console.log(props.id);
-      updateIsCompleted(props.id, true).then(setIsCompleted(true));
+      props.onCompIncomp(props.id,true);
+
     } else if (selection === "incompleted") {
-      updateIsCompleted(props.id, false).then(setIsCompleted(false));
+      props.onCompIncomp(props.id,false);
     } else if (selection === "delete") {
       props.onDelete(props.id);
     }
@@ -25,13 +26,13 @@ const ListElement = (props) => {
   return (
     <tr key={props.setKey}>
       <td
-        className={isCompleted ? classes.completed : classes.incompleted}
+        className={props.isCompleted ? classes.completed : classes.incompleted}
         onClick={update}
       >
         {props.title}
       </td>
       <td
-        className={isCompleted ? classes.completed : classes.incompleted}
+        className={props.isCompleted ? classes.completed : classes.incompleted}
         onClick={update}
       >
         {props.description}

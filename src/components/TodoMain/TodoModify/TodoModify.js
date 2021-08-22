@@ -12,8 +12,8 @@ const TodoModify = (props) => {
   const [Update, setUpdate] = useState(props.isUpdate);
   const params = useParams();
   const submitHandler = (event) => {
+    event.preventDefault();
     if (!Update) {
-      event.preventDefault();
       const dataObj = {
         title: titleInput.current.value,
         description: descriptionInput.current.value,
@@ -22,7 +22,6 @@ const TodoModify = (props) => {
       setUpdate(false);
       addTodo(dataObj).then(getAllTodos()).then(history.push("/home/listTodo"));
     } else {
-      event.preventDefault();
       const title = titleInput.current.value;
       const description = descriptionInput.current.value;
       setUpdate(true);
@@ -41,7 +40,7 @@ const TodoModify = (props) => {
         <InputComponent
           type="text"
           id={props.isUpdate ? "update-todo-title" : "add-todo-title"}
-          placeholder={props.isUpdate ? props.titlePlaceholder : "Do Laundary"}
+          placeholder={props.isUpdate ? props.titlePlaceholder : "Do Laundry"}
           inputRef={titleInput}
         >
           Title
