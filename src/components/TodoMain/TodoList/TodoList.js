@@ -9,13 +9,11 @@ const TodoList = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const callTodo = useCallback(() => {
-
-      getAllTodos().then((data) => {
-        setTodoList(data);
-        setIsLoading(false);
-
-      });
-  },[]);
+    getAllTodos().then((data) => {
+      setTodoList(data);
+      setIsLoading(false);
+    });
+  }, []);
 
   useEffect(() => {
     callTodo();
@@ -31,12 +29,15 @@ const TodoList = () => {
     await callTodo();
   };
 
-
   return (
     <main className={classes["table-align"]}>
       <h1>TODO List</h1>
-      <p>Completed: {todoList.filter((el) => el.isCompleted === true).length}</p>
-      <p>Incompleted: {todoList.filter((el) => el.isCompleted === false).length}</p>
+      <p>
+        Completed: {todoList.filter((el) => el.isCompleted === true).length}
+      </p>
+      <p>
+        Incompleted: {todoList.filter((el) => el.isCompleted === false).length}
+      </p>
       <table>
         <tbody>
           <tr>

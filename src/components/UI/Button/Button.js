@@ -1,5 +1,5 @@
 import React from "react";
-import  "./Button.module.css";
+import "./Button.module.css";
 
 const Button = (props) => {
   const fullStyle = "btn-transition " + props.addClass;

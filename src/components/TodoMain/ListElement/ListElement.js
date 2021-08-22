@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 const ListElement = (props) => {
   const history = useHistory();
 
-
   const update = () => {
     history.push(`/home/updatetodo/${props.id}`);
   };
@@ -14,10 +13,9 @@ const ListElement = (props) => {
 
     if (selection === "completed") {
       console.log(props.id);
-      props.onCompIncomp(props.id,true);
-
+      props.onCompIncomp(props.id, true);
     } else if (selection === "incompleted") {
-      props.onCompIncomp(props.id,false);
+      props.onCompIncomp(props.id, false);
     } else if (selection === "delete") {
       props.onDelete(props.id);
     }
