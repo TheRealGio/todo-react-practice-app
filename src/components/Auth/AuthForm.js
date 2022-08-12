@@ -32,12 +32,12 @@ const AuthForm = () => {
     let url;
     if (isLogin) {
       url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=***REMOVED***";
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.FIREBASE_APP_API_KEY}`;
     } else {
       nameInputValue = nameInputRef.current.value;
       enteredConfirmPassword = confirmPasswordInputRef.current.value;
       url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=***REMOVED***";
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.FIREBASE_APP_API_KEY}`;
     }
 
     if (enteredPassword === enteredConfirmPassword) {
